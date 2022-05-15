@@ -1,0 +1,36 @@
+// Ref: https://github.com/nuxt-community/vuetify-module#customvariables
+//
+// The variables you want to modify
+// $font-size-root: 20px;
+$body-font-family: "Manrope", sans-serif;
+$material-light: (
+    background: #ffffff,
+    text: (
+        "primary": #000,
+    ),
+);
+$slider-thumb-size: 18px;
+$border-radius-root: 8px;
+$btn-outline-border-width: 0px;
+// $text-field-border-radius: 8px;
+// $btn-border-radius: 8px;
+$rounded: (
+    0: 0,
+    "sm": $border-radius-root - 8,
+    null: $border-radius-root,
+    "lg": $border-radius-root + 4,
+    "xl": $border-radius-root + 8,
+    "pill": 9999px,
+    "circle": 50%,
+);
+
+@mixin transition($time) {
+    transition: all $time ease-in-out;
+}
+
+@mixin flex($direction, $justify, $align) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}

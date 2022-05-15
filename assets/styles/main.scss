@@ -1,0 +1,87 @@
+@import "./typography";
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white, 50%)) {
+  ::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+@include scrollbars(7px, #babcd4);
+
+.app-sider-transition {
+  // &-enter-active,
+  // &-leave-active {
+  //     transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);
+  // }
+
+  &-move {
+    transition: transform 0.1s;
+  }
+  &-enter {
+    transform: translateX(100%);
+  }
+  &-leave,
+  &-leave-to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.icis_disable-min-height {
+  .v-input__control {
+    min-height: auto !important;
+  }
+  .v-input__slot {
+    min-height: auto !important;
+  }
+}
+.icis_min-height-inherit {
+  .v-input__control {
+    min-height: inherit !important;
+  }
+  .v-input__slot {
+    min-height: inherit !important;
+  }
+}
+
+.v-autocomplete.v-input > .v-input__control > .v-input__slot {
+  cursor: pointer !important;
+  input {
+    cursor: pointer !important;
+  }
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.theme--light.v-label {
+  color: rgb(0, 0, 0, 0.38);
+}
+
+.v-picker {
+  &.v-time-picker-custom {
+    .v-picker__title {
+      height: 88px;
+      padding: 10px 16px;
+    }
+
+    .v-time-picker-title__time {
+      .v-picker__title__btn,
+      span {
+        font-size: 34px;
+      }
+    }
+  }
+}

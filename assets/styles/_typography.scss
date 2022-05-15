@@ -1,0 +1,73 @@
+$heading-color: #1b1d21;
+
+.flagman-h1-bold {
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 27px;
+    color: $heading-color;
+}
+
+.flagman-h2-bold {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 36px;
+    color: $heading-color;
+}
+
+.flagman-h3-bold {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 23px;
+    color: $heading-color;
+}
+
+.flagman-h4-bold {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 16px;
+    color: $heading-color;
+}
+
+/////////
+
+.flagman-h1-medium {
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+    color: $heading-color;
+}
+
+.flagman-h2-medium {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    color: $heading-color;
+}
+
+.flagman-h3-medium {
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 17px;
+    color: $heading-color;
+}
+.apexcharts-toolbar {
+    z-index: 5 !important;
+}
+
+.icis-body-caption-1 {
+    font-size: 13px;
+    line-height: 18px;
+}
+
+.icis-body-title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 21px;
+}

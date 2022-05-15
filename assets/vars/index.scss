@@ -1,0 +1,7 @@
+@import "~vuetify/src/styles/styles.sass";
+
+$flagman-xs: map-get($grid-breakpoints, "xs");
+$flagman-sm: map-get($grid-breakpoints, "sm");
+$flagman-md: map-get($grid-breakpoints, "md");
+$flagman-lg: map-get($grid-breakpoints, "lg");
+$flagman-xl: map-get($grid-breakpoints, "xl");
