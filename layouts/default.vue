@@ -133,7 +133,7 @@ export default {
         buyer: 'Покупатель',
         seller: 'Продавец',
       },
-      isDrawerVisible: !!this.$vuetify.mdAndUp,
+      isDrawerVisible: !!this.$vuetify.breakpoint.mdAndUp,
     }
   },
   // fetch() {

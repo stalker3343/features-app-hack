@@ -2,7 +2,6 @@
   <v-bottom-sheet
     :value="value"
     :persistent="persistent"
-    class="hehehe"
     content-class="icis-right-sheet"
     v-bind="$attrs"
     :width="width"
@@ -11,16 +10,39 @@
     v-on="$listeners"
     @click:outside="onClickOutside"
   >
-    <div class="sider__close" @click="onCloseBtnClick">
-      <!-- <app-icon :size="25" name="Close" /> -->
-      <v-icon> mdi-close </v-icon>
-    </div>
-    <div v-if="showBackBtn" class="sider__back" @click="$emit('back')">
-      <app-icon :size="25" name="Arrow-left" />
-    </div>
+    <template v-if="!isMobile">
+      <div class="sider-close-desktop" @click="onCloseBtnClick">
+        <app-icon :size="25" name="Close" />
+      </div>
+      <div v-if="showBackBtn" class="sider-back" @click="$emit('back')">
+        <app-icon :size="25" name="Arrow-left" />
+      </div>
+    </template>
 
     <div class="dark-white icis-right-sheet__inner">
-      <slot />
+      <div v-if="isMobile" class="mobile-sheet-header">
+        <div>
+          <div
+            v-if="showBackBtn"
+            class="sider-back-mobile"
+            @click="$emit('back')"
+          >
+            <app-icon :size="30" name="Arrow-left" />
+          </div>
+          <slot name="header" />
+        </div>
+
+        <div class="sider-close-mobile" @click="onCloseBtnClick">
+          <!-- <app-icon :size="40" name="Close" /> -->
+          <v-icon size="40">mdi-close</v-icon>
+        </div>
+      </div>
+      <div>
+        <slot />
+      </div>
+    </div>
+    <div class="sheet-sticky-bottom">
+      <slot name="bottom" />
     </div>
   </v-bottom-sheet>
 </template>
@@ -59,6 +81,10 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    isMobile: {
+      type: Boolean,
+      default: false,
+    },
   },
   // watch: {
   //   value() {
@@ -94,29 +120,56 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-.icis-right-sheet__inner {
-  position: relative;
-  overflow-y: auto !important;
-  height: 100%;
-}
-.sider__close {
-  cursor: pointer;
-  width: 32px;
-  height: 32px;
+.sheet-sticky-bottom {
+  // position: sticky;
+  // bottom: 0px;
   position: absolute;
-  top: 8px;
-  left: -40px;
-  background-color: var(--v-dark-white-base);
-  border-radius: 12px;
-  @include flex(row, center, center);
+  bottom: 0px;
+  z-index: 1;
 }
-.sider__back {
+
+.mobile-sheet-header {
+  display: flex;
+  padding: 10px 14px;
+  align-items: center;
+  position: sticky;
+  top: 0px;
+  background-color: white;
+  z-index: 2;
+  // justify-content: space-between;
+}
+.sider-back {
   cursor: pointer;
   width: 32px;
   height: 32px;
   position: absolute;
   top: 46px;
   left: -40px;
+  background-color: var(--v-dark-white-base);
+  border-radius: 12px;
+  @include flex(row, center, center);
+}
+.sider-back-mobile {
+}
+.sider-close-mobile {
+  margin-left: auto;
+}
+.icis-right-sheet__inner {
+  position: relative;
+  overflow-y: auto !important;
+  height: 100%;
+  padding-bottom: 100px;
+}
+.icis-right-sheet__wrapper {
+  position: relative;
+}
+.sider-close-desktop {
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  left: -40px;
+  width: 32px;
+  height: 32px;
   background-color: var(--v-dark-white-base);
   border-radius: 12px;
   @include flex(row, center, center);

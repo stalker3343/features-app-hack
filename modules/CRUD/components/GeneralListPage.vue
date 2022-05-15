@@ -80,7 +80,11 @@
       </v-col>
     </v-row>
     <!-- </v-container> -->
-    <flag-right-sheet v-model="isCreateEditSheetOpen" width="40%">
+    <flag-right-sheet
+      v-model="isCreateEditSheetOpen"
+      :is-mobile="$vuetify.breakpoint.mdAndDown"
+      :width="$vuetify.breakpoint.mdAndDown ? '100%' : '40%'"
+    >
       <template v-if="isCreateEditSheetOpen">
         <slot
           name="create-edit-sheet"
