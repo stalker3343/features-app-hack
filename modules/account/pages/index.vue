@@ -1,7 +1,7 @@
 <template>
   <div>
     <template v-if="userRole === 'admin'">
-      <flag-btn color="primary" block> Полная кабзда </flag-btn>
+      <flag-btn color="primary" block> Экспирация </flag-btn>
     </template>
     <template v-else>
       <h2 class="mb-3">Список обязательств</h2>

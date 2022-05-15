@@ -5,8 +5,12 @@ export default function ({ store, redirect, $pinia, req, route }) {
   // If the user is not authenticated
   let user = null
   if (process.server) {
-    const parsedCookies = serverCookie.parse(req.headers.cookie)
-    user = parsedCookies.user
+    if (!req.headers.cookie && route.name !== 'login') {
+      redirect('/login')
+    } else if (req.headers.cookie) {
+      const parsedCookies = serverCookie.parse(req.headers.cookie)
+      user = parsedCookies.user
+    }
   } else {
     const parsedCookies = jsCookies.get() // => { name: 'value' }
     user = parsedCookies.user

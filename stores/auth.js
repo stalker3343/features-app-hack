@@ -23,6 +23,15 @@ export const useAuthStore = defineStore('auth', {
   actions: {
     async nuxtServerInit() {
       const users = await this.$nuxt.$usersRepository.index()
+      this.$patch({
+        users,
+      })
+
+      console.log(this.$nuxt.req.headers.cookie)
+      if (!this.$nuxt.req.headers.cookie) {
+        return
+      }
+      console.log('assa')
 
       const parsedCookies = serverCookie.parse(this.$nuxt.req.headers.cookie)
       const cookieUser = parsedCookies.user
@@ -32,10 +41,6 @@ export const useAuthStore = defineStore('auth', {
           user,
         })
       }
-
-      this.$patch({
-        users,
-      })
     },
   },
 })
