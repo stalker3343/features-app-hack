@@ -1,12 +1,14 @@
 <template>
   <v-app id="inspire">
     <v-app-bar flat app color="white">
+      <v-btn class="d-block d-md-none" icon @click="toggleDrawer">
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
+
       <!-- <div class="flagman-h2-bold">Сохраненные стратегии</div> -->
 
       <v-spacer />
-      <!-- <v-btn icon>
-        <v-icon>mdi-bell-outline</v-icon>
-      </v-btn>
+      <!--
       <v-btn class="mr-3" icon>
         <v-icon>mdi-help-circle-outline</v-icon>
       </v-btn> -->
@@ -47,7 +49,12 @@
       </v-menu> -->
     </v-app-bar>
 
-    <v-navigation-drawer class="app-nav-drawer" permanent fixed app>
+    <v-navigation-drawer
+      v-model="isDrawerVisible"
+      class="app-nav-drawer"
+      fixed
+      app
+    >
       <!-- <img src="@/assets/images/logo.svg" class="logo__img" /> -->
       <div class="page-title">Биржа</div>
 
@@ -120,12 +127,15 @@ export default {
     AppConfirmModal,
     AppNotification,
   },
-  data: () => ({
-    roleToText: {
-      buyer: 'Покупатель',
-      seller: 'Продавец',
-    },
-  }),
+  data() {
+    return {
+      roleToText: {
+        buyer: 'Покупатель',
+        seller: 'Продавец',
+      },
+      isDrawerVisible: !!this.$vuetify.mdAndUp,
+    }
+  },
   // fetch() {
   //   this.store.user = this.store.users[1]
   // },
@@ -188,6 +198,9 @@ export default {
     },
   },
   methods: {
+    toggleDrawer() {
+      this.isDrawerVisible = !this.isDrawerVisible
+    },
     logout() {
       jsCookies.remove('user')
       this.$router.push({ name: 'login' })
